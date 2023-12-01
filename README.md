@@ -1,4 +1,4 @@
-# ToCrushOrNotToCrush
+# ToSendhOrNotToSend
 ## Project Overview
 This project uses different machine learning methods to attempt to predict a rock climber's skill level and maximum grade. The data used to build the models is the [8a.nu dataset](https://www.kaggle.com/datasets/jordizar/climb-dataset) from Kaggle.
 
