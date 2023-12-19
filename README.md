@@ -1,4 +1,4 @@
-# ToSendOrNotToSend {WIP}
+# ToSendOrNotToSend
 ## Project Overview
 This project uses different machine learning methods to attempt to predict a rock climber's skill level and maximum grade. The data used to build the models is the [8a.nu dataset](https://www.kaggle.com/datasets/jordizar/climb-dataset) from Kaggle.
 
@@ -42,6 +42,23 @@ The following figure shows the results of the KNN feature set and K hyperparamet
 
 As expected, the feature set including both first and maximum grade achieved the highest accuracy. The feature set only including maximum grade did slightly better than the set only including first grade. The set excluding first and maximum grade still achieved reasonably high performance.
 
+The most frequent misclassification occured when the model predicted Advanced, but the climber was actually Intermediate.
+
+![Both Confusion Matrix](plots/both_conf_heatmap.png)
+
+This indicates the the feature values for advanced climbers are more similar to intermediate climbers than the feature values for advanced climbers are to the values for expert climbers, so it is easier for the model to distinguish expert climbers. The ROC curves support this conclusion.
+
+![Both ROC](plots/roc_both_knn.png)
+
 ### Regression
 #### Linear Regression
+The model using all features achieved an R-Squared of 0.833. Most of its success can be attributed to the strong correlations between mean, first and maximum grade.
+
+![Linear Regression Pairplot](plots/linear_features_pairplot.png)
+
 #### Random Forest Regression
+Due to the lack of linearity between our features and maximum grade, a random forest regressor was used to see if performance improves. The model including all features resulted in an R-Squared value about ten percent higher than the full linear regression model's R-Squared, and the random forest model's RMSE was significantly lower than the linear model's. The largest difference we saw between the two models was in the model using grade count only to predict maximum grade. The R-Squared value for the random forest regressor, 0.34, was two times as high as the R-Squared value for the linear regressor. Of the three best performing single feature models, mean grade, first grade, and grade count, grade count is the least linear. Random forest regression does not make the linearity assumptions that linear regression does, hence its superior performance.
+
+We found the optimal maximum depth of trees in the forest to be the smallest value we tried, ten splits. Performance decreased with twenty and thirty splits, and did not change for maximum depths from thirty to one-hundred in increments of 10.
+
+![Max Depth](plots/max_depth_tune.png)
