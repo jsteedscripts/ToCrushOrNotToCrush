@@ -59,6 +59,6 @@ The model using all features achieved an R-Squared of 0.833. Most of its success
 #### Random Forest Regression
 Due to the lack of linearity between our features and maximum grade, a random forest regressor was used to see if performance improves. The model including all features resulted in an R-Squared value about ten percent higher than the full linear regression model's R-Squared, and the random forest model's RMSE was significantly lower than the linear model's. The largest difference we saw between the two models was in the model using grade count only to predict maximum grade. The R-Squared value for the random forest regressor, 0.34, was two times as high as the R-Squared value for the linear regressor. Of the three best performing single feature models, mean grade, first grade, and grade count, grade count is the least linear. Random forest regression does not make the linearity assumptions that linear regression does, hence its superior performance.
 
-We found the optimal maximum depth of trees in the forest to be the smallest value we tried, ten splits. Performance decreased with twenty and thirty splits, and did not change for maximum depths from thirty to one-hundred in increments of 10.
+The optimal maximum depth of trees in the forest wasxthe smallest value tested, ten splits. Performance decreased with twenty and thirty splits, and did not change for maximum depths from thirty to one-hundred in increments of 10.
 
 ![Max Depth](plots/max_depth_tune.png)
